@@ -1,0 +1,67 @@
+﻿@model WebApplication1.Models.TeachingInfo
+
+@{
+    Layout = "~/Views/Shared/_BackAdmin.cshtml";
+    ViewData["Title"] = "详情";
+}
+
+<h2>详情</h2>
+
+<div>
+    <h4>支教信息</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.TeachID)
+        </dt>
+        <dt>
+            @Html.DisplayFor(model => model.TeachID)
+        </dt>
+        <dt>
+            @Html.DisplayNameFor(model => model.School)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.School)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Location)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Location)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.StartDate)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.StartDate)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.EndDate)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.EndDate)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Subject)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Subject)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.mem)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.mem)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.maxmem)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.maxmem)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.TeachID">编辑</a> |
+    <a asp-action="Index">返回列表</a>
+</div>

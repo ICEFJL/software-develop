@@ -1,0 +1,52 @@
+﻿@model IEnumerable<WebApplication1.Models.TeachingRecord>
+
+@{
+    Layout = "~/Views/Shared/_BackAdmin.cshtml";
+    ViewData["Title"] = "支教申请列表";
+}
+
+<h2>支教申请列表</h2>
+
+@if (TempData["SuccessMessage"] != null)
+{
+    <div class="alert alert-success">
+        @TempData["SuccessMessage"]
+    </div>
+}
+
+@if (TempData["ErrorMessage"] != null)
+{
+    <div class="alert alert-danger">
+        @TempData["ErrorMessage"]
+    </div>
+}
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>支教ID</th>
+            <th>学生ID</th>
+            <th>评价</th>
+            <th>状态</th>
+            <th>操作</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.TeachID</td>
+                <td>@item.StudentID</td>
+                <td>@item.Evaluation</td>
+                <td>@item.Status</td>
+                <td>
+                    <form asp-action="Confirm" method="post">
+                        <input type="hidden" name="id" value="@item.RecordID" />
+                        <button type="submit" value="Confirm" class="btn btn-primary" name="submitType">确认</button>
+                        <button type="submit" value="Reject" class="btn btn-danger" name="submitType">拒绝</button>
+                    </form>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

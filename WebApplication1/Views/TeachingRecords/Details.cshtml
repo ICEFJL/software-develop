@@ -1,0 +1,43 @@
+﻿@model WebApplication1.Models.TeachingRecord
+
+@{
+    Layout = "~/Views/Shared/_BackAdmin.cshtml";
+    ViewData["Title"] = "详细信息";
+}
+
+<h2>详细信息</h2>
+
+<div>
+    <h4>支教记录</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            支教ID
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.TeachID)
+        </dd>
+        <dt>
+            学生ID
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Student.StudentID)
+        </dd>
+        <dt>
+            评价
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Evaluation)
+        </dd>
+        <dt>
+            状态
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Status)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.RecordID">编辑</a> |
+    <a asp-action="Index">返回列表</a>
+</div>

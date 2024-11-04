@@ -1,0 +1,83 @@
+﻿@model ItemManage.Models.Item
+
+@{
+    Layout = "~/Views/Shared/_BackAdmin.cshtml";
+    ViewData["Title"] = "Edit";
+}
+
+<h2>Edit</h2>
+
+<h4>Item</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" />
+            <div class="form-group">
+                <label asp-for="Code" class="control-label">物品编码</label>
+                <input asp-for="Code" class="form-control" readonly />
+                <span asp-validation-for="Code" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Name" class="control-label">物品名称</label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Category" class="control-label">物品类别</label>
+                <div>
+                    <input type="radio" asp-for="Category" value="纸张"  /> 纸张
+                    <input type="radio" asp-for="Category" value="文具"  /> 文具
+                    <input type="radio" asp-for="Category" value="刀具"  /> 刀具
+                    <input type="radio" asp-for="Category" value="单据"  /> 单据
+                    <input type="radio" asp-for="Category" value="礼品"  /> 礼品
+                    <input type="radio" asp-for="Category" value="其他"  /> 其他
+                </div>
+                <span asp-validation-for="Category" class="text-danger"></span>
+            </div>
+
+
+            <div class="form-group">
+                <label asp-for="Origin" class="control-label">产地</label>
+                <select asp-for="Origin" asp-items="@(new SelectList(new[] { "上海", "广州", "深圳", "北京", "南京", "其他" }))"></select>
+                <span asp-validation-for="Origin" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Specification" class="control-label">规格</label>
+                <input asp-for="Specification" class="form-control" />
+                <span asp-validation-for="Specification" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Model" class="control-label">型号</label>
+                <input asp-for="Model" class="form-control" />
+                <span asp-validation-for="Model" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ImagePath" class="control-label">物品图片</label>
+                <input type="file" name="img" />
+                <input type="submit" value="Upload" class="btn btn-default" name="submitType" />
+            </div>
+            
+            <div>
+                <!-- 使用ViewData中的ImageUrl来显示图片 -->
+                <img src="@(string.IsNullOrEmpty(Model.ImagePath) ? ViewData["ImageUrl"] : Model.ImagePath)" alt="上传的图片" style="max-width: 100%; max-height: 100%; width: auto; height: auto;" />
+            </div>
+            <div class="form-group">
+                <input type="hidden" asp-for="ImagePath" value="@ViewData["ImageUrl"]" />
+                <span asp-validation-for="ImagePath" class="text-danger"></span>
+                <input type="submit" value="Save" class="btn btn-default" name="submitType" />
+            </div>
+
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

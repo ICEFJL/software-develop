@@ -1,0 +1,76 @@
+﻿@model IEnumerable<WebApplication1.Models.TeachingRecord>
+
+@{
+    var userIdString = Context.Session.GetString("NickName");
+    Layout = "~/Views/Shared/_BackHome.cshtml";
+    ViewData["Title"] = "Index";
+}
+
+<h2>支教记录列表</h2>
+
+<form asp-action="HIndex" method="post">
+    <div class="form-group">
+        <label for="searchString">搜索</label>
+        <input type="text" name="searchString" class="form-control" placeholder="输入支教ID" value="@ViewData["CurrentFilter"]" />
+    </div>
+    <div class="form-group">
+        <label for="statusFilter">状态</label>
+        <select name="statusFilter" class="form-control">
+            <option value="">所有</option>
+            <option value="确认">确认</option>
+            <option value="申请">申请</option>
+            <option value="拒绝">拒绝</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="evaluationFilter">评价</label>
+        <select name="evaluationFilter" class="form-control">
+            <option value="">所有</option>
+            <option value="优秀">优秀</option>
+            <option value="良好">良好</option>
+            <option value="合格">合格</option>
+            <option value="差">差</option>
+            <option value="暂无">暂无</option>
+        </select>
+    </div>
+    <button type="submit" class="btn btn-primary">搜索</button>
+</form>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.TeachingInfo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Student)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Evaluation)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Status)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TeachID)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Student.UserId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Evaluation)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Status)
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

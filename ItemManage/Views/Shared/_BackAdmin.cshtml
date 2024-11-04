@@ -1,0 +1,142 @@
+﻿@using Microsoft.AspNetCore.Http
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+    <link rel="stylesheet" type="text/css" href="/css/bootstrap-clearmin.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/roboto.css">
+    <link rel="stylesheet" type="text/css" href="/css/material-design.css">
+    <link rel="stylesheet" type="text/css" href="/css/small-n-flat.css">
+    <link rel="stylesheet" type="text/css" href="/css/font-awesome.min.css">
+    <title>@ViewBag.Title</title>
+</head>
+<body class="cm-no-transition cm-1-navbar">
+    <div id="cm-menu">
+        <nav class="cm-navbar cm-navbar-primary">
+            <div class="cm-flex">
+                <h4 style="line-height:30px;text-align:center">办公物品管理系统</h4>
+            </div>
+            <div class="btn btn-primary md-menu-white" data-toggle="cm-menu"></div>
+        </nav>
+        
+        <div id="cm-menu-content">
+            <div id="cm-menu-items-wrapper">
+                <div id="cm-menu-scroller">
+                    <ul class="cm-menu-items">
+                        <li class="cm-submenu">
+                            <a class="sf-user-male">用户维护 <span class="caret"></span></a>
+                            <ul>
+                                <li><a href="/Users/Index">用户列表</a></li>
+                                <li><a href="/Users/Create">用户创建</a></li>
+                            </ul>
+                        </li>
+
+                        <li class="cm-submenu">
+                            <a class="sf-building">物品管理 <span class="caret"></span></a>
+                            <ul>
+                                <li><a href="/Items/Index">物品列表</a></li>
+                                <li><a href="/Items/Create">物品创建</a></li>
+                            </ul>
+                        </li>
+
+                        <li class="cm-submenu">
+                            <a class="sf-keyring">物品入库 <span class="caret"></span></a>
+                            <ul>
+                                <li><a href="/Inbounds/Create">入库创建</a></li>
+                            </ul>
+                        </li>
+
+                        <li class="cm-submenu">
+                            <a class="sf-tag-alt">物品出库 <span class="caret"></span></a>
+                            <ul>
+                                <li><a href="/Outbounds/Confirm">领用确认</a></li>
+                            </ul>
+                        </li>
+
+                        <li class= "cm-submenu">
+                            <a class="sf-cogs">库存查询 <span class="caret"></span></a>
+                            <ul>
+                                <li><a href="/Items/Bounds">库存信息</a></li>
+                                <li><a href="/Inbounds/Index">入库明细</a></li>
+                                <li><a href="/Outbounds/Index">领用明细</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <header id="cm-header">
+        <nav class="cm-navbar cm-navbar-primary">
+            <div class="btn btn-primary md-menu-white hidden-md hidden-lg" data-toggle="cm-menu"></div>
+            <div class="cm-flex">
+                <h1><a href="/Admin/Index" style="color:#fff">首页</a></h1>
+                <form id="cm-search" action="index.html" method="get">
+                    <input type="search" name="q" autocomplete="off" placeholder="Search...">
+                </form>
+            </div>
+
+            <div class="dropdown pull-right">
+                <div class="popover cm-popover bottom">
+                    <div class="arrow"></div>
+                    <div class="popover-content">
+                        <div class="list-group">
+                            <a href="#" class="list-group-item">
+                                <h4 class="list-group-item-heading text-overflow">
+                                    <i class="fa fa-fw fa-envelope"></i> Nunc volutpat aliquet magna.
+                                </h4>
+                                <p class="list-group-item-text text-overflow">Pellentesque tincidunt mollis scelerisque. Praesent vel blandit quam.</p>
+                            </a>
+                            <a href="#" class="list-group-item">
+                                <h4 class="list-group-item-heading">
+                                    <i class="fa fa-fw fa-envelope"></i> Aliquam orci lectus
+                                </h4>
+                                <p class="list-group-item-text">Donec quis arcu non risus sagittis</p>
+                            </a>
+                            <a href="#" class="list-group-item">
+                                <h4 class="list-group-item-heading">
+                                    <i class="fa fa-fw fa-warning"></i> Holy guacamole !
+                                </h4>
+                                <p class="list-group-item-text">Best check yo self, you're not looking too good.</p>
+                            </a>
+                        </div>
+                        <div style="padding:10px"><a class="btn btn-success btn-block" href="#">Show me more...</a></div>
+                    </div>
+                </div>
+            </div>
+            <div class="dropdown pull-right">
+                <button class="btn btn-primary md-account-circle-white" data-toggle="dropdown"></button>
+                <ul class="dropdown-menu">
+                    <li class="disabled text-center">
+                        <strong>@Context.Session.GetString("NickName")</strong>
+                    </li>
+                    <li class="divider"></li>
+                    <li>
+                        <a href="/Login/LoginOut"><i class="fa fa-fw fa-sign-out"></i>退出</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+    <div id="global">
+        <div class="container-fluid">
+            <div class="row cm-fix-height">
+                @RenderBody()
+            </div>
+        </div>
+
+        
+        @RenderSection("Scripts", required: false)
+    </div>
+    <script src="/js/lib/jquery.min.js"></script>
+    <script src="/js/jquery.mousewheel.min.js"></script>
+    <script src="/js/jquery.cookie.min.js"></script>
+    <script src="/js/fastclick.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+    <script src="/js/clearmin.min.js"></script>
+    <script src="/js/demo/home.js"></script>
+    
+</body>
+</html>

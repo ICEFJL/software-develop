@@ -1,0 +1,48 @@
+﻿@model ItemManage.Models.LoginViewModel
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+    <link rel="stylesheet" type="text/css" href="/css/bootstrap-clearmin.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/roboto.css">
+    <link rel="stylesheet" type="text/css" href="/css/font-awesome.min.css">
+    <title>办公物品管理系统</title>
+    <style></style>
+</head>
+<body class="cm-login">
+
+    <div class="text-center" style="padding:90px 0 30px 0;background:#fff;border-bottom:1px solid #ddd">
+        <h1>办公物品管理系统</h1>
+    </div>
+
+    <div class="col-sm-6 col-md-4 col-lg-3" style="margin:40px auto; float:none;">
+        <form method="post" asp-action="Index">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="col-xs-12">
+                <div class="form-group">
+                    <div class="input-group">
+                        <div class="input-group-addon"><i class="fa fa-fw fa-user"></i></div>
+                        <input asp-for="Name" class="form-control" placeholder="用户名">
+                    </div>
+                    <span asp-validation-for="Name" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <div class="input-group">
+                        <div class="input-group-addon"><i class="fa fa-fw fa-lock"></i></div>
+                        <input asp-for="Password" type="password" class="form-control" placeholder="密码">
+                    </div>
+                    <span asp-validation-for="Password" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="col-xs-6">
+                <button type="submit" class="btn btn-block btn-primary">登录</button>
+            </div>
+        </form>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validation-unobtrusive/3.2.11/jquery.validate.unobtrusive.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,56 @@
+﻿@model IEnumerable<ItemManage.Models.Outbound>
+
+@{
+    Layout = "~/Views/Shared/_BackAdmin.cshtml";
+    ViewData["Title"] = "领用申请列表";
+}
+
+<h2>领用申请列表</h2>
+
+@if (TempData["SuccessMessage"] != null)
+{
+    <div class="alert alert-success">
+        @TempData["SuccessMessage"]
+    </div>
+}
+
+@if (TempData["ErrorMessage"] != null)
+{
+    <div class="alert alert-danger">
+        @TempData["ErrorMessage"]
+    </div>
+}
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>物品编码</th>
+            <th>领用日期</th>
+            <th>数量</th>
+            <th>用户ID</th>
+            <th>状态</th>
+            <th>操作</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.ItemCode</td>
+                <td>@item.ApplyDate.ToString("yyyy-MM-dd")</td>
+                <td>@item.Quantity</td>
+                <td>@item.UserId</td>
+                <td>@item.Status</td>
+                <td>
+                    @if (item.Status == "申请")
+                    {
+                        <form asp-action="Confirm" method="post">
+                            <input type="hidden" name="id" value="@item.Id" />
+                            <button type="submit" class="btn btn-primary">确认</button>
+                        </form>
+                    }
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

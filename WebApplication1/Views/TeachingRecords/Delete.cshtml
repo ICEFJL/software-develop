@@ -1,0 +1,46 @@
+﻿@model WebApplication1.Models.TeachingRecord
+
+@{
+    Layout = "~/Views/Shared/_BackAdmin.cshtml";
+    ViewData["Title"] = "删除";
+}
+
+<h2>删除</h2>
+
+<h3>你确定要删除这条记录吗？</h3>
+<div>
+    <h4>支教记录</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            支教ID
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.TeachID)
+        </dd>
+        <dt>
+            学生ID
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Student.StudentID)
+        </dd>
+        <dt>
+            评价
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Evaluation)
+        </dd>
+        <dt>
+            状态
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Status)
+        </dd>
+    </dl>
+
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="RecordID" />
+        <input type="submit" value="删除" class="btn btn-default" /> |
+        <a asp-action="Index">返回列表</a>
+    </form>
+</div>

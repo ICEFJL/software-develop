@@ -1,0 +1,60 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="CALC.MainPage">
+
+    <!-- 使用Grid作为根布局 -->
+    <Grid RowSpacing="7" ColumnSpacing="6" Margin="20">
+
+        <!-- 设置七行四列的网格 -->
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <Label x:Name="opreationLabel" Text="0" FontSize="Small" TextColor="Grey" HorizontalTextAlignment="End" Grid.Row="0" Grid.ColumnSpan="4" />
+
+        <!-- 使用Label显示计算结果，并占据第二行四列 -->
+        <Label x:Name="displayLabel" Text="0" FontSize="Large" HorizontalTextAlignment="End" Grid.Row="1" Grid.ColumnSpan="4" />
+
+        <!-- 使用Button创建键盘按钮，并占据特定的Grid位置，设置Clicked事件处理程序 -->
+        <Button Text="Back" Background="SkyBlue" TextColor="Black" Clicked="OnBackClicked" Grid.Row="2" Grid.Column="0" />
+        <Button Text="C" Background="SkyBlue" TextColor="Black" Clicked="OnClearClicked" Grid.Row="2" Grid.Column="1" />
+        <Button Text="CE" Background="SkyBlue" TextColor="Black" Clicked="OnClearEntryClicked" Grid.Row="2" Grid.Column="2" />
+        <Button Text="/" Background="SkyBlue" TextColor="Black" Clicked="OnOperatorClicked" Grid.Row="2" Grid.Column="3"/>
+
+        <Button Text="7" Background="SkyBlue" TextColor="Black" Clicked="OnNumberClicked" Grid.Row="3" Grid.Column="0"/>
+        <Button Text="8" Background="SkyBlue" TextColor="Black" Clicked="OnNumberClicked" Grid.Row="3" Grid.Column="1"/>
+        <Button Text="9" Background="SkyBlue" TextColor="Black" Clicked="OnNumberClicked" Grid.Row="3" Grid.Column="2"/>
+        <Button Text="*" Background="SkyBlue" TextColor="Black" Clicked="OnOperatorClicked" Grid.Row="3" Grid.Column="3"/>
+
+        <Button Text="4" Background="SkyBlue" TextColor="Black" Clicked="OnNumberClicked" Grid.Row="4" Grid.Column="0"/>
+        <Button Text="5" Background="SkyBlue" TextColor="Black" Clicked="OnNumberClicked" Grid.Row="4" Grid.Column="1"/>
+        <Button Text="6" Background="SkyBlue" TextColor="Black" Clicked="OnNumberClicked" Grid.Row="4" Grid.Column="2"/>
+        <Button Text="-" Background="SkyBlue" TextColor="Black" Clicked="OnOperatorClicked" Grid.Row="4" Grid.Column="3"/>
+
+        <Button Text="1" Background="SkyBlue" TextColor="Black" Clicked="OnNumberClicked" Grid.Row="5" Grid.Column="0"/>
+        <Button Text="2" Background="SkyBlue" TextColor="Black" Clicked="OnNumberClicked" Grid.Row="5" Grid.Column="1"/>
+        <Button Text="3" Background="SkyBlue" TextColor="Black" Clicked="OnNumberClicked" Grid.Row="5" Grid.Column="2"/>
+        <Button Text="+" Background="SkyBlue" TextColor="Black" Clicked="OnOperatorClicked" Grid.Row="5" Grid.Column="3"/>
+
+        <Button Text="0" Background="SkyBlue" TextColor="Black" Clicked="OnNumberClicked" Grid.Row="6" Grid.Column="0" />
+        <Button Text="." Background="SkyBlue" TextColor="Black" Clicked="OnNumberClicked" Grid.Row="6" Grid.Column="1"/>
+        <Button Text="=" Background="SkyBlue" TextColor="Black" Clicked="OnEqualClicked" Grid.Row="6" Grid.Column="2"/>
+        <Button Text="^" Background="SkyBlue" TextColor="Black" Clicked="OnOperatorClicked" Grid.Row="6" Grid.Column="3"/>
+
+    </Grid>
+
+</ContentPage>

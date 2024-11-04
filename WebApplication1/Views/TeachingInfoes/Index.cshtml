@@ -1,0 +1,64 @@
+﻿@model IEnumerable<WebApplication1.Models.TeachingInfo>
+
+@{
+    Layout = "~/Views/Shared/_BackAdmin.cshtml";
+    ViewData["Title"] = "支教信息列表";
+}
+
+<h2>支教信息列表</h2>
+
+<form asp-action="Index" method="post">
+    <div class="form-group">
+        <label for="searchString">学校名称</label>
+        <input type="text" name="searchString" class="form-control" placeholder="输入学校名称" value="@ViewData["CurrentFilter"]" />
+    </div>
+    <div class="form-group">
+        <label for="subjectFilter">科目</label>
+        <select name="subjectFilter" class="form-control" asp-items="ViewBag.Subjects">
+            <option value="">所有</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="locationFilter">地点</label>
+        <select name="locationFilter" class="form-control" asp-items="ViewBag.Locations">
+            <option value="">所有</option>
+        </select>
+    </div>
+    <button type="submit" class="btn btn-primary">搜索</button>
+</form>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>学校</th>
+            <th>地点</th>
+            <th>开始日期</th>
+            <th>结束日期</th>
+            <th>科目</th>
+            <th>报名人数</th>
+            <th>最大人数</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@Html.DisplayFor(modelItem => item.TeachID)</td>
+                <td>@Html.DisplayFor(modelItem => item.School)</td>
+                <td>@Html.DisplayFor(modelItem => item.Location)</td>
+                <td>@Html.DisplayFor(modelItem => item.StartDate)</td>
+                <td>@Html.DisplayFor(modelItem => item.EndDate)</td>
+                <td>@Html.DisplayFor(modelItem => item.Subject)</td>
+                <td>@Html.DisplayFor(modelItem => item.mem)</td>
+                <td>@Html.DisplayFor(modelItem => item.maxmem)</td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.TeachID">编辑</a> |
+                    <a asp-action="Details" asp-route-id="@item.TeachID">详情</a> |
+                    <a asp-action="Delete" asp-route-id="@item.TeachID">删除</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

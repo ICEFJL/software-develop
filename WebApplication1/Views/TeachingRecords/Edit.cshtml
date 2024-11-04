@@ -1,0 +1,51 @@
+﻿@model WebApplication1.Models.TeachingRecord
+
+@{
+    Layout = "~/Views/Shared/_BackAdmin.cshtml";
+    ViewData["Title"] = "编辑评价";
+}
+
+<h2>编辑评价</h2>
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="RecordID" />
+            <div class="form-group">
+                <label asp-for="TeachID" class="control-label">支教ID</label>
+                <select asp-for="TeachID" class="form-control" asp-items="ViewBag.TeachID" readonly></select>
+                <span asp-validation-for="TeachID" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="StudentID" class="control-label">学生ID</label>
+                <select asp-for="StudentID" class="form-control" asp-items="ViewBag.StudentID" readonly></select>
+                <span asp-validation-for="StudentID" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Evaluation" class="control-label">评价</label>
+                <select asp-for="Evaluation" asp-items="@(new SelectList(new[] { "优秀", "良好", "合格", "差","暂无" }))"></select>
+                <span asp-validation-for="Evaluation" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Status" class="control-label">状态</label>
+                <input asp-for="Status" class="form-control" readonly />
+                <span asp-validation-for="Status" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="保存" class="btn btn-default" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">返回列表</a>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

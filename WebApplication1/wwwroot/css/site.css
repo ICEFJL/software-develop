@@ -1,0 +1,27 @@
+html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
+  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+    margin-bottom: 60px;
+    background-image: url("D:/Codefield/project/software-develop/WebApplication1/wwwroot/images/2.jpg"); /* Ìæ»» 'your-image-url.jpg' ÎªÄãµÄÍ¼Æ¬URL */
+    background-size: cover; /* ±³¾°Í¼Æ¬¸²¸ÇÕû¸öÒ³Ãæ */
+    background-position: center; /* ±³¾°Í¼Æ¬¾ÓÖÐÏÔÊ¾ */
+    background-repeat: no-repeat; /* ±³¾°Í¼Æ¬²»ÖØ¸´ */
+}
+
